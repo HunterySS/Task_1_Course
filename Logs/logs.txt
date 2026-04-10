@@ -1,0 +1,39 @@
+2026-04-10 21:34:54 INFO  com.arrayapp.Main - Application started
+2026-04-10 21:34:54 INFO  com.arrayapp.Main - Read 6 lines from file
+2026-04-10 21:34:54 INFO  com.arrayapp.Main - Processing line 1: '1, 2, 3, 1, 14, 13, 28'
+2026-04-10 21:34:54 INFO  com.arrayapp.Main - Line 1: array = [1.0, 2.0, 3.0, 1.0, 14.0, 13.0, 28.0]
+2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Min value: 1.0
+2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Max value: 28.0
+2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Sum: 62.0
+2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Average: 8.857142857142858
+2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Bubble sort result: [1.0, 1.0, 2.0, 3.0, 13.0, 14.0, 28.0]
+2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Quick sort result: [1.0, 1.0, 2.0, 3.0, 13.0, 14.0, 28.0]
+2026-04-10 21:34:54 INFO  com.arrayapp.Main - Processing line 2: '1 - 2 - 3'
+2026-04-10 21:34:54 INFO  com.arrayapp.Main - Line 2: array = [1.0, 2.0, 3.0]
+2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Min value: 1.0
+2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Max value: 3.0
+2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Sum: 6.0
+2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Average: 2.0
+2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Bubble sort result: [1.0, 2.0, 3.0]
+2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Quick sort result: [1.0, 2.0, 3.0]
+2026-04-10 21:34:54 INFO  com.arrayapp.Main - Processing line 3: ''
+2026-04-10 21:34:54 INFO  com.arrayapp.Main - Line 3: empty array created
+2026-04-10 21:34:54 INFO  com.arrayapp.Main - Processing line 4: '1, 2, x3, 6..5, 77'
+2026-04-10 21:34:54 ERROR com.arrayapp.Main - Line 4: Failed to parse - Invalid number format: x3
+2026-04-10 21:34:54 INFO  com.arrayapp.Main - Processing line 5: '11- 2 - 42-'
+2026-04-10 21:34:54 INFO  com.arrayapp.Main - Line 5: array = [11.0, 2.0, 42.0]
+2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Min value: 2.0
+2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Max value: 42.0
+2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Sum: 55.0
+2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Average: 18.333333333333332
+2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Bubble sort result: [2.0, 11.0, 42.0]
+2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Quick sort result: [2.0, 11.0, 42.0]
+2026-04-10 21:34:54 INFO  com.arrayapp.Main - Processing line 6: '1; 2; 3'
+2026-04-10 21:34:54 INFO  com.arrayapp.Main - Line 6: array = [1.0, 2.0, 3.0]
+2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Min value: 1.0
+2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Max value: 3.0
+2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Sum: 6.0
+2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Average: 2.0
+2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Bubble sort result: [1.0, 2.0, 3.0]
+2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Quick sort result: [1.0, 2.0, 3.0]
+2026-04-10 21:34:54 INFO  com.arrayapp.Main - Application finished
