@@ -35,6 +35,18 @@ public class NumericArray extends AbstractArray {
 
     @Override
     public String toString() {
-        return Arrays.toString(values);
+        if (values == null || values.length == 0) {
+            return "[]";
+        }
+
+        StringBuilder sb = new StringBuilder("[");
+        for (int i = 0; i < values.length; i++) {
+            sb.append(values[i]);
+            if (i < values.length - 1) {
+                sb.append(", ");
+            }
+        }
+        sb.append("]");
+        return sb.toString();
     }
 }
