@@ -5,6 +5,8 @@ import com.ilya.arrayapp.exception.ArrayProcessingException;
 import com.ilya.arrayapp.factory.impl.ArrayFactory;
 import com.ilya.arrayapp.factory.ArrayFactoryImpl;
 import com.ilya.arrayapp.reader.ArrayFileReader;
+import com.ilya.arrayapp.repository.impl.ArrayRepository;
+import com.ilya.arrayapp.repository.ArrayRepositoryImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.ilya.arrayapp.service.impl.StatisticsService;
@@ -27,6 +29,8 @@ public class Main {
         StatisticsService statsService = new StatisticsServiceImpl();
         SortService sortService = new SortServiceImpl();
 
+        ArrayRepository repository = ArrayRepositoryImpl.getInstance();
+
         String filePath = "data/arrays.txt";
 
         try {
@@ -42,6 +46,9 @@ public class Main {
                         continue;
                     }
 
+                    repository.add(array);
+                    LOGGER.info("Line {}: array added to repository with id {}", i + 1, array.getId());
+
                     statsService.findMin(array);
                     statsService.findMax(array);
                     statsService.sum(array);
@@ -54,11 +61,17 @@ public class Main {
                     sortService.quickSort(arrayForQuickSort);
 
                 } catch (ArrayProcessingException e) {
-                    // error logged inside reader
+                    LOGGER.error("Line {}: Error - {}", i + 1, e.getMessage());
                 }
             }
 
+            LOGGER.info("Repository contains {} arrays", repository.size());
+            repository.findAll().forEach(array ->
+                    LOGGER.info("  Array id {}: {}", array.getId(), array)
+            );
+
         } catch (IOException e) {
+            LOGGER.error("Failed to read file: {}", e.getMessage());
         }
 
         LOGGER.info("Application finished");

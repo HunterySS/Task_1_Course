@@ -1,6 +1,7 @@
 package com.ilya.arrayapp.factory;
 
 import com.ilya.arrayapp.entity.NumericArray;
+import com.ilya.arrayapp.exception.NullArrayException;
 import com.ilya.arrayapp.factory.impl.ArrayFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,7 +10,7 @@ public class ArrayFactoryImpl implements ArrayFactory {
     private static final Logger LOGGER = LogManager.getLogger(ArrayFactoryImpl.class);
 
     @Override
-    public NumericArray createArray(double[] values) {
+    public NumericArray createArray(double[] values) throws NullArrayException {
         LOGGER.debug("Creating array from values: {}", java.util.Arrays.toString(values));
         NumericArray array = new NumericArrayBuilder()
                 .setValues(values)
@@ -26,11 +27,11 @@ public class ArrayFactoryImpl implements ArrayFactory {
             return this;
         }
 
-        public NumericArray build() {
+        public NumericArray build() throws NullArrayException {
             if (values == null) {
-                return new NumericArray(new double[0]);
+                return new NumericArray(-1, new double[0]);
             }
-            return new NumericArray(values);
+            return new NumericArray(-1, values);
         }
     }
 }

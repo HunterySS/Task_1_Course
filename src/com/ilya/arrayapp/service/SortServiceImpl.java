@@ -1,6 +1,8 @@
 package com.ilya.arrayapp.service;
 
 import com.ilya.arrayapp.entity.NumericArray;
+import com.ilya.arrayapp.exception.LengthMismatchException;
+import com.ilya.arrayapp.exception.NullArrayException;
 import com.ilya.arrayapp.service.impl.SortService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,7 +11,11 @@ public class SortServiceImpl implements SortService {
     private static final Logger LOGGER = LogManager.getLogger(SortServiceImpl.class);
 
     @Override
-    public void bubbleSort(NumericArray array) {
+    public void bubbleSort(NumericArray array) throws NullArrayException, LengthMismatchException {
+        if (array == null) {
+            throw new NullArrayException("Cannot sort null array");
+        }
+
         LOGGER.info("Starting bubble sort on array: {}", array);
         double[] values = array.getValues();
         int n = values.length;
@@ -27,7 +33,11 @@ public class SortServiceImpl implements SortService {
     }
 
     @Override
-    public void quickSort(NumericArray array) {
+    public void quickSort(NumericArray array) throws NullArrayException, LengthMismatchException {
+        if (array == null) {
+            throw new NullArrayException("Cannot sort null array");
+        }
+
         LOGGER.info("Starting quick sort on array: {}", array);
         double[] values = array.getValues();
         quickSortRecursive(values, 0, values.length - 1);

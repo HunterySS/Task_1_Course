@@ -1,6 +1,8 @@
 package com.ilya.arrayapp.service;
 
 import com.ilya.arrayapp.entity.NumericArray;
+import com.ilya.arrayapp.exception.NullArrayException;
+import com.ilya.arrayapp.service.impl.StatisticsService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.OptionalDouble;
@@ -8,12 +10,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class StatisticsServiceTest {
 
-    private ArrayOperationsService service;
+    private StatisticsService service;
     private NumericArray array;
 
     @BeforeEach
-    void setUp() {
-        service = new ArrayOperationsServiceImpl();
+    void setUp() throws NullArrayException {
+        service = new StatisticsServiceImpl();
         array = new NumericArray(new double[]{5, 2, 8, 1, 9, 3});
     }
 
@@ -25,7 +27,7 @@ class StatisticsServiceTest {
     }
 
     @Test
-    void testFindMin_WhenArrayEmpty_ShouldReturnEmpty() {
+    void testFindMin_WhenArrayEmpty_ShouldReturnEmpty() throws NullArrayException {
         NumericArray emptyArray = new NumericArray(new double[0]);
         OptionalDouble min = service.findMin(emptyArray);
         assertTrue(min.isEmpty());
@@ -39,7 +41,7 @@ class StatisticsServiceTest {
     }
 
     @Test
-    void testFindMax_WhenArrayEmpty_ShouldReturnEmpty() {
+    void testFindMax_WhenArrayEmpty_ShouldReturnEmpty() throws NullArrayException {
         NumericArray emptyArray = new NumericArray(new double[0]);
         OptionalDouble max = service.findMax(emptyArray);
         assertTrue(max.isEmpty());
@@ -53,7 +55,7 @@ class StatisticsServiceTest {
     }
 
     @Test
-    void testSum_WhenArrayEmpty_ShouldReturnZero() {
+    void testSum_WhenArrayEmpty_ShouldReturnZero() throws NullArrayException {
         NumericArray emptyArray = new NumericArray(new double[0]);
         OptionalDouble sum = service.sum(emptyArray);
         assertTrue(sum.isPresent());
@@ -68,7 +70,7 @@ class StatisticsServiceTest {
     }
 
     @Test
-    void testAverage_WhenArrayEmpty_ShouldReturnEmpty() {
+    void testAverage_WhenArrayEmpty_ShouldReturnEmpty() throws NullArrayException {
         NumericArray emptyArray = new NumericArray(new double[0]);
         OptionalDouble avg = service.average(emptyArray);
         assertTrue(avg.isEmpty());
