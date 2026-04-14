@@ -1,39 +1,81 @@
-2026-04-10 21:34:54 INFO  com.arrayapp.Main - Application started
-2026-04-10 21:34:54 INFO  com.arrayapp.Main - Read 6 lines from file
-2026-04-10 21:34:54 INFO  com.arrayapp.Main - Processing line 1: '1, 2, 3, 1, 14, 13, 28'
-2026-04-10 21:34:54 INFO  com.arrayapp.Main - Line 1: array = [1.0, 2.0, 3.0, 1.0, 14.0, 13.0, 28.0]
-2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Min value: 1.0
-2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Max value: 28.0
-2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Sum: 62.0
-2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Average: 8.857142857142858
-2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Bubble sort result: [1.0, 1.0, 2.0, 3.0, 13.0, 14.0, 28.0]
-2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Quick sort result: [1.0, 1.0, 2.0, 3.0, 13.0, 14.0, 28.0]
-2026-04-10 21:34:54 INFO  com.arrayapp.Main - Processing line 2: '1 - 2 - 3'
-2026-04-10 21:34:54 INFO  com.arrayapp.Main - Line 2: array = [1.0, 2.0, 3.0]
-2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Min value: 1.0
-2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Max value: 3.0
-2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Sum: 6.0
-2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Average: 2.0
-2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Bubble sort result: [1.0, 2.0, 3.0]
-2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Quick sort result: [1.0, 2.0, 3.0]
-2026-04-10 21:34:54 INFO  com.arrayapp.Main - Processing line 3: ''
-2026-04-10 21:34:54 INFO  com.arrayapp.Main - Line 3: empty array created
-2026-04-10 21:34:54 INFO  com.arrayapp.Main - Processing line 4: '1, 2, x3, 6..5, 77'
-2026-04-10 21:34:54 ERROR com.arrayapp.Main - Line 4: Failed to parse - Invalid number format: x3
-2026-04-10 21:34:54 INFO  com.arrayapp.Main - Processing line 5: '11- 2 - 42-'
-2026-04-10 21:34:54 INFO  com.arrayapp.Main - Line 5: array = [11.0, 2.0, 42.0]
-2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Min value: 2.0
-2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Max value: 42.0
-2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Sum: 55.0
-2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Average: 18.333333333333332
-2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Bubble sort result: [2.0, 11.0, 42.0]
-2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Quick sort result: [2.0, 11.0, 42.0]
-2026-04-10 21:34:54 INFO  com.arrayapp.Main - Processing line 6: '1; 2; 3'
-2026-04-10 21:34:54 INFO  com.arrayapp.Main - Line 6: array = [1.0, 2.0, 3.0]
-2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Min value: 1.0
-2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Max value: 3.0
-2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Sum: 6.0
-2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Average: 2.0
-2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Bubble sort result: [1.0, 2.0, 3.0]
-2026-04-10 21:34:54 INFO  com.arrayapp.Main -   Quick sort result: [1.0, 2.0, 3.0]
-2026-04-10 21:34:54 INFO  com.arrayapp.Main - Application finished
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.Main - Application started
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.reader.ArrayFileReader - Reading file: data/arrays.txt
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.reader.ArrayFileReader - Read 6 lines from file
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.entity.NumericArray - Created array with 9 elements: [1.0, 2.0, 3.0, 1.0, 14.0, 13.0, 28.0, 29.0, 12.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.factory.ArrayFactoryImpl - Array created: [1.0, 2.0, 3.0, 1.0, 14.0, 13.0, 28.0, 29.0, 12.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.reader.ArrayFileReader - Created array: [1.0, 2.0, 3.0, 1.0, 14.0, 13.0, 28.0, 29.0, 12.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.StatisticsServiceImpl - Min value for array [1.0, 2.0, 3.0, 1.0, 14.0, 13.0, 28.0, 29.0, 12.0] is 1.0
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.StatisticsServiceImpl - Max value for array [1.0, 2.0, 3.0, 1.0, 14.0, 13.0, 28.0, 29.0, 12.0] is 29.0
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.StatisticsServiceImpl - Sum for array [1.0, 2.0, 3.0, 1.0, 14.0, 13.0, 28.0, 29.0, 12.0] is 103.0
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.StatisticsServiceImpl - Sum for array [1.0, 2.0, 3.0, 1.0, 14.0, 13.0, 28.0, 29.0, 12.0] is 103.0
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.StatisticsServiceImpl - Average for array [1.0, 2.0, 3.0, 1.0, 14.0, 13.0, 28.0, 29.0, 12.0] is 11.444444444444445
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.entity.NumericArray - Created array with 9 elements: [1.0, 2.0, 3.0, 1.0, 14.0, 13.0, 28.0, 29.0, 12.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.factory.ArrayFactoryImpl - Array created: [1.0, 2.0, 3.0, 1.0, 14.0, 13.0, 28.0, 29.0, 12.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.SortServiceImpl - Starting bubble sort on array: [1.0, 2.0, 3.0, 1.0, 14.0, 13.0, 28.0, 29.0, 12.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.entity.NumericArray - Array values updated: [1.0, 1.0, 2.0, 3.0, 12.0, 13.0, 14.0, 28.0, 29.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.SortServiceImpl - Bubble sort completed: [1.0, 1.0, 2.0, 3.0, 12.0, 13.0, 14.0, 28.0, 29.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.entity.NumericArray - Created array with 9 elements: [1.0, 2.0, 3.0, 1.0, 14.0, 13.0, 28.0, 29.0, 12.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.factory.ArrayFactoryImpl - Array created: [1.0, 2.0, 3.0, 1.0, 14.0, 13.0, 28.0, 29.0, 12.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.SortServiceImpl - Starting quick sort on array: [1.0, 2.0, 3.0, 1.0, 14.0, 13.0, 28.0, 29.0, 12.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.entity.NumericArray - Array values updated: [1.0, 1.0, 2.0, 3.0, 12.0, 13.0, 14.0, 28.0, 29.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.SortServiceImpl - Quick sort completed: [1.0, 1.0, 2.0, 3.0, 12.0, 13.0, 14.0, 28.0, 29.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.entity.NumericArray - Created array with 3 elements: [1.0, 2.0, 3.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.factory.ArrayFactoryImpl - Array created: [1.0, 2.0, 3.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.reader.ArrayFileReader - Created array: [1.0, 2.0, 3.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.StatisticsServiceImpl - Min value for array [1.0, 2.0, 3.0] is 1.0
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.StatisticsServiceImpl - Max value for array [1.0, 2.0, 3.0] is 3.0
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.StatisticsServiceImpl - Sum for array [1.0, 2.0, 3.0] is 6.0
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.StatisticsServiceImpl - Sum for array [1.0, 2.0, 3.0] is 6.0
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.StatisticsServiceImpl - Average for array [1.0, 2.0, 3.0] is 2.0
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.entity.NumericArray - Created array with 3 elements: [1.0, 2.0, 3.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.factory.ArrayFactoryImpl - Array created: [1.0, 2.0, 3.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.SortServiceImpl - Starting bubble sort on array: [1.0, 2.0, 3.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.entity.NumericArray - Array values updated: [1.0, 2.0, 3.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.SortServiceImpl - Bubble sort completed: [1.0, 2.0, 3.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.entity.NumericArray - Created array with 3 elements: [1.0, 2.0, 3.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.factory.ArrayFactoryImpl - Array created: [1.0, 2.0, 3.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.SortServiceImpl - Starting quick sort on array: [1.0, 2.0, 3.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.entity.NumericArray - Array values updated: [1.0, 2.0, 3.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.SortServiceImpl - Quick sort completed: [1.0, 2.0, 3.0]
+2026-04-14 19:28:29 WARN  com.ilya.arrayapp.reader.ArrayFileReader - Empty or null line, returning empty array
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.entity.NumericArray - Created array with 0 elements: []
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.factory.ArrayFactoryImpl - Array created: []
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.reader.ArrayFileReader - Created array: []
+2026-04-14 19:28:29 ERROR com.ilya.arrayapp.reader.ArrayFileReader - Invalid number format: 'x3' in line: 1, 2, x3, 6..5, 77
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.entity.NumericArray - Created array with 3 elements: [11.0, 2.0, 42.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.factory.ArrayFactoryImpl - Array created: [11.0, 2.0, 42.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.reader.ArrayFileReader - Created array: [11.0, 2.0, 42.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.StatisticsServiceImpl - Min value for array [11.0, 2.0, 42.0] is 2.0
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.StatisticsServiceImpl - Max value for array [11.0, 2.0, 42.0] is 42.0
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.StatisticsServiceImpl - Sum for array [11.0, 2.0, 42.0] is 55.0
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.StatisticsServiceImpl - Sum for array [11.0, 2.0, 42.0] is 55.0
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.StatisticsServiceImpl - Average for array [11.0, 2.0, 42.0] is 18.333333333333332
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.entity.NumericArray - Created array with 3 elements: [11.0, 2.0, 42.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.factory.ArrayFactoryImpl - Array created: [11.0, 2.0, 42.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.SortServiceImpl - Starting bubble sort on array: [11.0, 2.0, 42.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.entity.NumericArray - Array values updated: [2.0, 11.0, 42.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.SortServiceImpl - Bubble sort completed: [2.0, 11.0, 42.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.entity.NumericArray - Created array with 3 elements: [11.0, 2.0, 42.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.factory.ArrayFactoryImpl - Array created: [11.0, 2.0, 42.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.SortServiceImpl - Starting quick sort on array: [11.0, 2.0, 42.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.entity.NumericArray - Array values updated: [2.0, 11.0, 42.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.SortServiceImpl - Quick sort completed: [2.0, 11.0, 42.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.entity.NumericArray - Created array with 3 elements: [1.0, 2.0, 3.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.factory.ArrayFactoryImpl - Array created: [1.0, 2.0, 3.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.reader.ArrayFileReader - Created array: [1.0, 2.0, 3.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.StatisticsServiceImpl - Min value for array [1.0, 2.0, 3.0] is 1.0
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.StatisticsServiceImpl - Max value for array [1.0, 2.0, 3.0] is 3.0
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.StatisticsServiceImpl - Sum for array [1.0, 2.0, 3.0] is 6.0
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.StatisticsServiceImpl - Sum for array [1.0, 2.0, 3.0] is 6.0
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.StatisticsServiceImpl - Average for array [1.0, 2.0, 3.0] is 2.0
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.entity.NumericArray - Created array with 3 elements: [1.0, 2.0, 3.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.factory.ArrayFactoryImpl - Array created: [1.0, 2.0, 3.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.SortServiceImpl - Starting bubble sort on array: [1.0, 2.0, 3.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.entity.NumericArray - Array values updated: [1.0, 2.0, 3.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.SortServiceImpl - Bubble sort completed: [1.0, 2.0, 3.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.entity.NumericArray - Created array with 3 elements: [1.0, 2.0, 3.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.factory.ArrayFactoryImpl - Array created: [1.0, 2.0, 3.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.SortServiceImpl - Starting quick sort on array: [1.0, 2.0, 3.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.entity.NumericArray - Array values updated: [1.0, 2.0, 3.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.service.SortServiceImpl - Quick sort completed: [1.0, 2.0, 3.0]
+2026-04-14 19:28:29 INFO  com.ilya.arrayapp.Main - Application finished
