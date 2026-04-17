@@ -2,17 +2,19 @@ package com.ilya.arrayapp;
 
 import com.ilya.arrayapp.entity.NumericArray;
 import com.ilya.arrayapp.exception.ArrayProcessingException;
+import com.ilya.arrayapp.exception.NullArrayException;
 import com.ilya.arrayapp.factory.impl.ArrayFactory;
 import com.ilya.arrayapp.factory.ArrayFactoryImpl;
 import com.ilya.arrayapp.reader.ArrayFileReader;
 import com.ilya.arrayapp.repository.impl.ArrayRepository;
 import com.ilya.arrayapp.repository.ArrayRepositoryImpl;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import com.ilya.arrayapp.service.impl.StatisticsService;
 import com.ilya.arrayapp.service.StatisticsServiceImpl;
 import com.ilya.arrayapp.service.impl.SortService;
 import com.ilya.arrayapp.service.SortServiceImpl;
+import com.ilya.arrayapp.warehouse.Warehouse;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.util.List;
@@ -46,6 +48,7 @@ public class Main {
                         continue;
                     }
 
+                    // Добавляем массив в репозиторий
                     repository.add(array);
                     LOGGER.info("Line {}: array added to repository with id {}", i + 1, array.getId());
 
@@ -69,6 +72,14 @@ public class Main {
             repository.findAll().forEach(array ->
                     LOGGER.info("  Array id {}: {}", array.getId(), array)
             );
+
+            LOGGER.info("Statistics from Warehouse:");
+            repository.findAll().forEach(array -> {
+                var stats = Warehouse.getInstance().getStatistics(array.getId());
+                if (stats != null) {
+                    LOGGER.info("  Array id {}: {}", array.getId(), stats);
+                }
+            });
 
         } catch (IOException e) {
             LOGGER.error("Failed to read file: {}", e.getMessage());

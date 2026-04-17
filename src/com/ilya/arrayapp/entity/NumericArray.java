@@ -2,14 +2,21 @@ package com.ilya.arrayapp.entity;
 
 import com.ilya.arrayapp.exception.LengthMismatchException;
 import com.ilya.arrayapp.exception.NullArrayException;
+import com.ilya.arrayapp.observer.ArrayChangeListener;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class NumericArray extends AbstractArray {
     private static final Logger LOGGER = LogManager.getLogger(NumericArray.class);
 
     private final int id;
     private double[] values;
+
+    // List of listeners (observers)
+    private final List<ArrayChangeListener> listeners = new ArrayList<>();
 
     // Constructor with id and values
     public NumericArray(int id, double[] values) throws NullArrayException {
@@ -21,7 +28,7 @@ public class NumericArray extends AbstractArray {
         LOGGER.info("Created array with id {}: {}", id, this);
     }
 
-    // Constructor without id (for backward compatibility)
+    // Constructor without id
     public NumericArray(double[] values) throws NullArrayException {
         this(-1, values);
     }
@@ -51,6 +58,28 @@ public class NumericArray extends AbstractArray {
         }
         System.arraycopy(newValues, 0, this.values, 0, newValues.length);
         LOGGER.info("Array with id {} updated: {}", id, this);
+
+        // Notify all listeners about the change
+        notifyListeners();
+    }
+
+    // Observer methods
+    public void addListener(ArrayChangeListener listener) {
+        if (listener != null && !listeners.contains(listener)) {
+            listeners.add(listener);
+            LOGGER.debug("Added listener for array id {}", id);
+        }
+    }
+
+    public void removeListener(ArrayChangeListener listener) {
+        listeners.remove(listener);
+        LOGGER.debug("Removed listener for array id {}", id);
+    }
+
+    private void notifyListeners() {
+        for (ArrayChangeListener listener : listeners) {
+            listener.onArrayChanged(this);
+        }
     }
 
     @Override

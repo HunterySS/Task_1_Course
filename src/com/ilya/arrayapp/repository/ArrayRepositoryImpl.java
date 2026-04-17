@@ -2,9 +2,10 @@ package com.ilya.arrayapp.repository;
 
 import com.ilya.arrayapp.entity.NumericArray;
 import com.ilya.arrayapp.exception.NullArrayException;
+import com.ilya.arrayapp.repository.impl.ArrayRepository;
+import com.ilya.arrayapp.warehouse.Warehouse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import com.ilya.arrayapp.repository.impl.ArrayRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,9 +40,11 @@ public class ArrayRepositoryImpl implements ArrayRepository {
         if (array.getId() == -1) {
             int id = generateId();
             storage.put(id, array);
+            array.addListener(Warehouse.getInstance());
             LOGGER.info("Added array with generated id {}: {}", id, array);
         } else {
             storage.put(array.getId(), array);
+            array.addListener(Warehouse.getInstance());
             LOGGER.info("Added array with id {}: {}", array.getId(), array);
         }
     }
@@ -50,6 +53,7 @@ public class ArrayRepositoryImpl implements ArrayRepository {
     public boolean removeById(int id) {
         NumericArray removed = storage.remove(id);
         if (removed != null) {
+            Warehouse.getInstance().removeStatistics(id);
             LOGGER.info("Removed array with id {}: {}", id, removed);
             return true;
         }
@@ -60,12 +64,19 @@ public class ArrayRepositoryImpl implements ArrayRepository {
     @Override
     public Optional<NumericArray> findById(int id) {
         NumericArray array = storage.get(id);
+        if (array != null) {
+            LOGGER.debug("Found array with id {}: {}", id, array);
+        } else {
+            LOGGER.debug("Array with id {} not found", id);
+        }
         return Optional.ofNullable(array);
     }
 
     @Override
     public List<NumericArray> findAll() {
-        return new ArrayList<>(storage.values());
+        List<NumericArray> arrays = new ArrayList<>(storage.values());
+        LOGGER.info("Returning {} arrays from repository", arrays.size());
+        return arrays;
     }
 
     @Override
@@ -75,6 +86,9 @@ public class ArrayRepositoryImpl implements ArrayRepository {
 
     @Override
     public void clear() {
+        for (int id : storage.keySet()) {
+            Warehouse.getInstance().removeStatistics(id);
+        }
         storage.clear();
         LOGGER.info("Repository cleared");
     }
