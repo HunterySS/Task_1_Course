@@ -13,6 +13,11 @@ import com.ilya.arrayapp.service.StatisticsServiceImpl;
 import com.ilya.arrayapp.service.impl.SortService;
 import com.ilya.arrayapp.service.SortServiceImpl;
 import com.ilya.arrayapp.warehouse.Warehouse;
+import com.ilya.arrayapp.repository.ComparisonOperator;
+import com.ilya.arrayapp.comparator.ArrayByIdComparator;
+import com.ilya.arrayapp.comparator.ArrayByNameComparator;
+import com.ilya.arrayapp.comparator.ArrayBySizeComparator;
+import com.ilya.arrayapp.comparator.ArrayBySumComparator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -48,9 +53,8 @@ public class Main {
                         continue;
                     }
 
-                    // Добавляем массив в репозиторий
                     repository.add(array);
-                    LOGGER.info("Line {}: array added to repository with id {}", i + 1, array.getId());
+                    LOGGER.info("Line {}: array added to repository", i + 1);
 
                     statsService.findMin(array);
                     statsService.findMax(array);
@@ -78,8 +82,55 @@ public class Main {
                 var stats = Warehouse.getInstance().getStatistics(array.getId());
                 if (stats != null) {
                     LOGGER.info("  Array id {}: {}", array.getId(), stats);
+                } else {
+                    LOGGER.warn("  Array id {}: no statistics found", array.getId());
                 }
             });
+
+            LOGGER.info("=== Search Demos ===");
+
+            repository.findByName("Array_1").ifPresent(array ->
+                    LOGGER.info("Found by name 'Array_1': id {}", array.getId())
+            );
+
+            LOGGER.info("Arrays with size > 3:");
+            var sizeResult = repository.findBySize(3, ComparisonOperator.GREATER_THAN);
+            if (sizeResult.isEmpty()) {
+                LOGGER.info("  (no arrays found)");
+            } else {
+                sizeResult.forEach(array -> LOGGER.info("  id {}: size={}", array.getId(), array.size()));
+            }
+
+            LOGGER.info("Arrays with sum > 10:");
+            var sumResult = repository.findBySum(10, ComparisonOperator.GREATER_THAN);
+            if (sumResult.isEmpty()) {
+                LOGGER.info("  (no arrays found)");
+            } else {
+                sumResult.forEach(array -> LOGGER.info("  id {}: sum={}", array.getId(),
+                        Warehouse.getInstance().getStatistics(array.getId()).getSum()));
+            }
+
+            LOGGER.info("=== Sorting Demos ===");
+
+            LOGGER.info("Sorted by ID:");
+            repository.findAllSorted(new ArrayByIdComparator())
+                    .forEach(array -> LOGGER.info("  id {}: {}", array.getId(), array));
+
+            LOGGER.info("Sorted by name:");
+            repository.findAllSorted(new ArrayByNameComparator())
+                    .forEach(array -> LOGGER.info("  name '{}': {}", array.getName(), array));
+
+            LOGGER.info("Sorted by size:");
+            repository.findAllSorted(new ArrayBySizeComparator())
+                    .forEach(array -> LOGGER.info("  size {}: {}", array.size(), array));
+
+            LOGGER.info("Sorted by sum:");
+            repository.findAllSorted(new ArrayBySumComparator())
+                    .forEach(array -> {
+                        var stats = Warehouse.getInstance().getStatistics(array.getId());
+                        double sum = stats != null ? stats.getSum() : 0.0;
+                        LOGGER.info("  sum {}: id {}", sum, array.getId());
+                    });
 
         } catch (IOException e) {
             LOGGER.error("Failed to read file: {}", e.getMessage());

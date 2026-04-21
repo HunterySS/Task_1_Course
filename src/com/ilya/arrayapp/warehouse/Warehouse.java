@@ -1,20 +1,26 @@
 package com.ilya.arrayapp.warehouse;
 
 import com.ilya.arrayapp.entity.NumericArray;
-import com.ilya.arrayapp.observer.ArrayChangeListener;
+import com.ilya.arrayapp.observer.impl.ArrayChangeListener;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-public class Warehouse implements ArrayChangeListener {
+public class Warehouse {
     private static final Logger LOGGER = LogManager.getLogger(Warehouse.class);
 
-    // Singleton instance
     private static final Warehouse INSTANCE = new Warehouse();
-
-    // Storage for array statistics
     private final ConcurrentHashMap<Integer, ArrayStatistics> statistics = new ConcurrentHashMap<>();
+
+    private static class WarehouseObserver implements ArrayChangeListener {
+        @Override
+        public void onArrayChanged(NumericArray array) {
+            Warehouse.getInstance().recalculateStatistics(array);
+        }
+    }
+
+    private static final ArrayChangeListener OBSERVER = new WarehouseObserver();
 
     private Warehouse() {
         LOGGER.info("Warehouse initialized");
@@ -24,13 +30,11 @@ public class Warehouse implements ArrayChangeListener {
         return INSTANCE;
     }
 
-    @Override
-    public void onArrayChanged(NumericArray array) {
-        LOGGER.info("Array with id {} changed, recalculating statistics", array.getId());
-        recalculateStatistics(array);
+    public static ArrayChangeListener getObserver() {
+        return OBSERVER;
     }
 
-    private void recalculateStatistics(NumericArray array) {
+   public void recalculateStatistics(NumericArray array) {
         double[] values = array.getValues();
 
         if (values.length == 0) {
@@ -68,7 +72,6 @@ public class Warehouse implements ArrayChangeListener {
         LOGGER.info("Removed statistics for array id {}", arrayId);
     }
 
-    // Inner class to hold statistics
     public static class ArrayStatistics {
         private final int size;
         private final double min;

@@ -1,4 +1,4 @@
-package com.ilya.arrayapp.observer;
+package com.ilya.arrayapp.observer.impl;
 
 import com.ilya.arrayapp.entity.NumericArray;
 
